@@ -1,0 +1,56 @@
+@import "mixins"
+@import "variables"
+@import "bourbon/bourbon"
+@import "neat/neat"
+@import "normalize"
+@import "fonts"
+
+/* General Styles */
+
+// body
+
+// .container
+
+/* Tophat */
+#tophat
+	height: 40px
+	background-color: $tophat-bg
+	overflow: hidden
+#logo
+	width: 250px
+	height: 100%
+	float: left
+	line-height: 43px
+	vertical-align: middle
+	img
+		margin: 0 10px
+		width: 90%
+	@media (max-width: 400px)
+		width: 200px
+.tophat-share-tools
+	float: right
+	height: 100%
+	line-height: 35px
+	font-size: 24px
+	vertical-align: middle
+	color: $tophat-social
+	margin: 0 10px
+	text-align: center
+	span
+		cursor: pointer
+		vertical-align: middle
+		margin-right: 8px
+		&:hover
+			color: $tophat-social--hover
+	@media (max-width: 760px)
+		font-size: 18px
+		line-height: 40px
+/* Leaderboard */
+#leaderboard
+	width: 728px 
+	height: 90px
+	background-color: #222222
+	margin: 10px auto
+	text-align: center
+	@media (max-width: 730px)
+		display: none

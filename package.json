@@ -1,0 +1,52 @@
+{
+  "name": "PROJ-NAME-HERE",
+  "version": "1.0.0",
+  "description": "PROJ-NAME-HERE",
+  "main": "index.js",
+  "scripts": {
+    "jade": "jade  -P -p src/index.jade < src/index.jade > dist/index.html",
+    "sass": "node-sass -o dist/css src/sass",
+    "uglify": "mkdir -p dist/js && uglifyjs src/js/jquery-3.0.0.min.js src/js/javascript.js -b -o dist/js/app.js",
+    "imagemin": "imagemin src/images dist/images -p",
+    "icons": "svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d src/images/icons -o dist/images/icons.svg",
+    "serve": "browser-sync start --server dist 'dist/css/*.css, dist/js/*.js'",
+    "reload": "browser-sync reload --files='dist/*'",
+    "build:html": "npm run jade",
+    "build:css": "npm run sass",
+    "build:js": "npm run uglify",
+    "build:images": "npm run imagemin",
+    "build:all": "npm run build:css && npm run build:js && npm run build:images",
+    "watch:html": "onchange 'src/*.jade' -- npm run build:html",
+    "watch:css": "onchange 'src/sass/*.sass' -- npm run build:css",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
+    "watch:server": "onchange 'dist/**' -- npm run reload",
+    "watch:all": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run watch:server'",
+    "jademin": "jade -p src/index.jade < src/index.jade > dist/index.html",
+    "sassmin": "node-sass --output-style compressed -o dist/css src/sass", 
+    "jsmin": "uglifyjs dist/js/app.js -m -c -o dist/js/app.min.js",
+    "build:min": "npm run jademin && npm run sassmin && npm run jsmin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinkimdata/PROJ-NAME-HERE.git"
+  },
+  "keywords": [],
+  "author": "Jin Bae Kim",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/jinkimdata/PROJ-NAME-HERE/issues"
+  },
+  "homepage": "https://github.com/jinkimdata/PROJ-NAME-HERE#readme",
+  "devDependencies": {
+    "browser-sync": "latest",
+    "eslint": "latest",
+    "imagemin": "latest",
+    "node-sass": "latest",
+    "onchange": "latest",
+    "parallelshell": "latest",
+    "svg-sprite-generator": "latest",
+    "svgo": "latest",
+    "uglify-js": "latest"
+  }
+}
+

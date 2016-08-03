@@ -1,0 +1,44 @@
+// Clearfix
+@mixin clearfix {
+	&:before, &:after {
+		content: "";
+		display: table; 
+	}
+	&:after {
+		clear: both; 
+	}
+	zoom: 1;  // For IE 6/7 (trigger hasLayout)
+}
+@mixin links($color, $textDecoration) {
+	a:link, a:visited, a:hover, a:active {
+		color: $color;
+		text-decoration: $textDecoration; 
+	} 
+}
+@mixin circle-w-centering($size, $border) {
+	width: $size;
+	height: $size;
+	border-radius: ($size + $border)/2;
+	line-height: ($size - ($border * 2));
+	text-align: center; 
+}
+
+@mixin aspect-ratio($width, $height, $childClass) {
+	&:before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: ($height/$width) * 100%;
+	}
+	> $childClass {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+}
+
+@mixin striped-background($angle, $width, $color1, $color2) {
+	background: repeating-linear-gradient($angle, $color1, $color1 $width, $color2 $width, $color2 $width*2);
+}

@@ -1,1 +1,4 @@
+.gitignore
+npm-debug.log
 .DS\_Store
+mocks/

@@ -1,3 +1,10 @@
+//- I use this datalink variable to quickly switch between using local assets and using uploaded assets. 
+//- For example, say I am uploading files to http://data.baltimoresun.com/example-link
+//- If I wanted to switch quickly to my local files, instead of changing all of my links, 
+//- I can just modify this single variable.
+//- There are two datalink variables so I don't have to rewrite the link every time. 
+//- The second datalink variable declaration overwrites the first one. 
+//- When I want to switch to my server assets, I comment out the second declaration.
 - var datalink = "http://data.baltimoresun.com/PROJECTLINK/"
 - var datalink = ""
 
@@ -14,7 +21,7 @@ html(class="no-js", lang="en")
 		meta(charset="utf-8")
 		title
 		meta(name="description", content="")
-		meta(name="author", content="Jin Bae Kim") 
+		meta(name="author", content="") 
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
 		link(rel="stylesheet", type="text/css", href="#{datalink}css/style.css")
 		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
@@ -35,11 +42,16 @@ html(class="no-js", lang="en")
 		meta(name="twitter:image", content="")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
+		//- Ad tag, uncomment to put in ad
+		//- include includes/ad-for-header.html
+		
 	body
+		//- This omniture file will also add a topnav.
 		//- include includes/omniture.html
 		
 		.container
 
+		//- Ad tag, uncomment to put in ad
 		//- #leaderboard			
 		//- 	include includes/ad-for-body.html
 		
@@ -47,6 +59,4 @@ html(class="no-js", lang="en")
 		script(src="#{datalink}js/min/jquery-3.0.0.min.js")
 		script(src="#{datalink}js/app.js")
 		//- script(src="#{datalink}js/app.min.js")
-
-		//- include includes/ad-for-header.html
-	
+		

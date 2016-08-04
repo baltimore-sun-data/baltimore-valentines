@@ -8,6 +8,24 @@
 @import "normalize";
 @import "fonts";
 
+body {
+	color: $offblack;
+	font-size: 14px; // body-level font size for "em"-scaled designs
+}
+h1 {
+	font-family: $montserrat;
+}
+p,a {
+	font-family: $lato;
+}
+a {
+	color: $goldenrod;
+	text-decoration: none;
+}
+.container {
+	margin-top: 50px; // Pushes below topnav
+}
+
 
 /* Leaderboard */
 // #leaderboard {

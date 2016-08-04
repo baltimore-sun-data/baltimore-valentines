@@ -461,4 +461,21 @@ th {
 .icon-facebook:before {
   content: "\e615"; }
 
+body {
+  color: #1e1e1e;
+  font-size: 14px; }
+
+h1 {
+  font-family: "Montserrat", sans-serif; }
+
+p, a {
+  font-family: "Lato", sans-serif; }
+
+a {
+  color: #daa520;
+  text-decoration: none; }
+
+.container {
+  margin-top: 50px; }
+
 /* Leaderboard */

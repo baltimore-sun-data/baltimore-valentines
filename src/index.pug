@@ -23,7 +23,7 @@ html(class="no-js", lang="en")
 		meta(name="description", content="")
 		meta(name="author", content="") 
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
-		link(rel="stylesheet", type="text/css", href="#{datalink}css/style.css")
+		link(rel="stylesheet", type="text/css", href=datalink + "css/style.css")
 		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
 
 		//Facebook Stuff
@@ -42,21 +42,23 @@ html(class="no-js", lang="en")
 		meta(name="twitter:image", content="")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
-		//- Ad tag, uncomment to put in ad
+		//- Ad tag, uncomment to put in ad. Be sure to uncomment the ad-for-body below.
 		//- include includes/ad-for-header.html
 		
 	body
 		//- This omniture file will also add a topnav.
-		//- include includes/omniture.html
+		include includes/omniture.html
 		
 		.container
-
-		//- Ad tag, uncomment to put in ad
+			h1 H1 / MONTSERRAT
+			p P / LATO Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec eros ac risus condimentum pretium. In faucibus quis risus sit amet ornare.
+			a(href="" target="_blank") A / LATO / GOLDENROD
+		//- Ad tag, uncomment to put in ad. Be sure to uncomment the ad-for-header above.
 		//- #leaderboard			
-		//- 	include includes/ad-for-body.html
+			include includes/ad-for-body.html
 		
 		//Javascript
-		script(src="#{datalink}js/min/jquery-3.0.0.min.js")
-		script(src="#{datalink}js/app.js")
-		//- script(src="#{datalink}js/app.min.js")
+		script(src=datalink + "js/min/jquery-3.0.0.min.js")
+		script(src=datalink + "js/app.js")
+		//- script(src=datalink + "js/app.min.js")
 		

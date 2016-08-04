@@ -23,8 +23,10 @@ html(class="no-js", lang="en")
 		meta(name="description", content="")
 		meta(name="author", content="") 
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
-		link(rel="stylesheet", type="text/css", href=datalink + "css/style.css")
 		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
+		//- Bootstrap, js below
+			//- link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+		link(rel="stylesheet", type="text/css", href=datalink + "css/style.css")
 
 		//Facebook Stuff
 		meta(property="og:title", content="")
@@ -46,7 +48,8 @@ html(class="no-js", lang="en")
 		//- include includes/ad-for-header.html
 		
 	body
-		//- This omniture file will also add a topnav.
+		//- This omniture file will also add a topnav. 
+		//- Remember to update the omniture tags
 		include includes/omniture.html
 		
 		.container
@@ -58,6 +61,8 @@ html(class="no-js", lang="en")
 			include includes/ad-for-body.html
 		
 		//Javascript
+		//- Bootstrap, css above
+			//- script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
 		script(src=datalink + "js/min/jquery-3.0.0.min.js")
 		script(src=datalink + "js/app.js")
 		//- script(src=datalink + "js/app.min.js")

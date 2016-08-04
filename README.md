@@ -1,4 +1,4 @@
-# template-jin
+# template-general
 
 This is a general template for The Baltimore Sun built around Pug and SCSS.
 

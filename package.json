@@ -4,25 +4,48 @@
   "description": "PROJ-NAME-HERE",
   "main": "index.js",
   "scripts": {
+    // Compiles index.pug and outputs to dist/index.hmtl
     "pug": "pug  -P -p src/index.pug < src/index.pug > dist/index.html",
+    // Compiles everything in src/scss and outputs to dist/css
     "scss": "node-sass -o dist/css src/scss",
+    // The uglify script compiles the various .js times in order. 
+    // That means you need to specify which files you want to compile and list them below.
+    // If you're not using jquery, you can erase the jquery path below.
     "uglify": "mkdir -p dist/js && uglifyjs src/js/jquery-3.0.0.min.js src/js/javascript.js -b -o dist/js/app.js",
+    // Compresses images so that they're smaller size with minimal, almost invisible quality difference.
+    // Run this command manually after adding images to your src/images folder.
     "imagemin": "imagemin src/images dist/images -p",
+    // Starts local server. You shouldn't have to call this because it is called in watch:all.
     "serve": "browser-sync start --server dist 'dist/css/*.css, dist/js/*.js'",
+    // Reloads local server. You shouldn't have to call this because it is called in watch:all.
     "reload": "browser-sync reload --files='dist/*'",
+    // The following build functions are redundant to the ones above. This is because later you might want to chain
+    // even more functions. For example, if I wanted to lint my JS as well as uglifying it, I could
+    // chain those functions below in the build:js script.
     "build:html": "npm run pug",
     "build:css": "npm run scss",
     "build:js": "npm run uglify",
     "build:images": "npm run imagemin",
+    // Compiles everything
     "build:all": "npm build:html && npm run build:css && npm run build:js && npm run build:images",
+    // The watch scripts watch your files and run commands if the files changes.
+    // You shouldn't have to call these functions manually, they're used in watch:all.
     "watch:html": "onchange 'src/*.pug' -- npm run build:html",
     "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css",
     "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
     "watch:server": "onchange 'dist/**' -- npm run reload",
+    // This is your main function. It will compile everything and recompile when anything in your
+    // src file changes (except images -- you will have to compile those manually with build:images).
+    // This script will also run your server.
+    // Please note that your watch:all script will continue to run after you log out of your computer. It will
+    // only stop if you kill the job or turn your computer.
+    // To kill a job, in Terminal write "jobs" and then "kill %#" where # is the job number.
     "watch:all": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run watch:server'",
+    // Minify scripts.
     "pugmin": "pug -p src/index.pug < src/index.pug > dist/index.html",
     "scssmin": "node-sass --output-style compressed -o dist/css src/scss", 
     "jsmin": "uglifyjs dist/js/app.js -m -c -o dist/js/app.min.js",
+    // Run this script at the end of your project, just before distribution, that way all of your files are minified.
     "build:min": "npm run pugmin && npm run scssmin && npm run jsmin"
   },
   "repository": {
@@ -37,16 +60,6 @@
   },
   "homepage": "https://github.com/USERNAME/PROJ-NAME-HERE#readme",
   "devDependencies": {
-    "browser-sync": "latest",
-    "eslint": "latest",
-    "imagemin": "latest",
-    "pug": "latest",
-    "sass": "latest",
-    "onchange": "latest",
-    "parallelshell": "latest",
-    "svg-sprite-generator": "latest",
-    "svgo": "latest",
-    "uglify-js": "latest"
   }
 }
 

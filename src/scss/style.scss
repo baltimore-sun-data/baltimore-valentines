@@ -8,23 +8,377 @@
 @import "normalize";
 @import "fonts";
 
+$pink-1: #fff3f5;
+$pink-2: #fdc1cc;
+$pink-3: #fb8da2;
+
+$no-lightbox: 850px;
+
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
 body {
-	color: $offblack;
-	font-size: 14px; // body-level font size for "em"-scaled designs
+	&.frozen {
+		overflow: hidden;
+		@media (max-width: $no-lightbox) {
+			overflow: auto;
+		}
+	}
 }
-h1 {
-	font-family: $montserrat;
+
+#header {
+	text-align: center;
+	background-color: $pink-1;
+	color: $pink-3;
+	border-top: 3px solid darken($pink-1, 2%);
+	border-bottom: 3px solid darken($pink-1, 2%);
+	padding: 20px 0;
+	font-family: "Pacifico", sans-serif;
+	font-size: 74px;
+	line-height: 1;
+	@media (max-width: 850px) {
+		font-size: 64px;
+	}
+	@media (max-width: 700px) {
+		font-size: 50px;
+	}
+	img {
+		vertical-align: middle;
+		margin: 0 15px;
+		width: 150px;
+		@media (max-width: 850px) {
+			width: 130px;
+		}
+		@media (max-width: 700px) {
+			width: 110px;
+		}
+		@media (max-width: 550px) {
+			display: block;
+			margin: 10px auto 5px auto;
+		}
+	}
+	span {
+		position: relative;
+		top: 10px;
+		@media (max-width: 550px) {
+			top: 0;
+		}
+	}
 }
-p,a {
-	font-family: $lato;
+
+#valentines {
+	max-width: 1300px;
+	margin: 20px auto;
+	text-align: center;
 }
-a {
-	color: $goldenrod;
-	text-decoration: none;
+
+.valentine {
+	display: inline-block;
+	margin: 5px;
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+	@include size(300px)
+	img {
+		width: 100%;
+		display: block;
+		opacity: 0;
+		visibility: hidden;
+		@include transition(all 0.4s)
+		&.visible {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	@media (max-width: 650px) {
+		@include size(45%);
+	}
+	@media (max-width: 500px) {
+		@include size(90%);
+	}
+	@media (max-width: $no-lightbox) {
+		overflow: visible;
+		margin-bottom: 85px;
+		cursor: default;
+	}
+	&:hover {
+		.overlay, .expand {
+			opacity: 1;
+			visibility: visible;
+		}
+		.expand {
+			@include transform(scale(1))
+		}
+		.share-tools {
+			@include transform(translateY(0))
+		}
+	}
 }
-.container {
-	margin-top: 50px; // Pushes below topnav
+
+.mobile-artist {
+	display: none;
+	margin: 20px 0 10px 0;
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	line-height: 1; 
+	@media (max-width: 850px) {
+		display: block;
+	}
 }
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	@include size(100%)
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 5;
+	opacity: 0;
+	visibility: hidden;
+	@include transition(all 0.5s)
+	@media (max-width: $no-lightbox) {
+		display: none;
+	}
+}
+
+.expand {
+	position: absolute;
+	top: 35%;
+	left: 0;
+	width: 100%;
+	z-index: 6;
+	text-align: center;
+	color: white;
+	font-size: 60px;
+	opacity: 0;
+	visibility: hidden;
+	@include transition(all 0.5s)
+	@include transform(scale(0.6))
+	@media (max-width: $no-lightbox) {
+		display: none;
+	}
+}
+.share-tools {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 6;
+	background-color: $pink-1;
+	padding: 15px 0;
+	border-bottom: 2px solid $pink-2;
+	color: #999999;
+	font-size: 18px;
+	@include transition(all 0.5s)
+	@include transform(translateY(100%))
+	span {
+		display: block;
+		float: left;
+		//cursor: pointer;
+		width: 25%;
+		&:hover {
+			color: black;
+		}
+	}
+	a:link, a:visited, a:hover, a:active {
+		color: #999999;
+		text-decoration: none;
+	}
+	a:hover {
+		color: black;
+	}
+	@media (max-width: $no-lightbox) {
+		@include transform(translateY(0%))
+		bottom: auto;
+		top: 100%;
+		cursor: pointer;
+		padding: 15px 0 0 0;
+	}
+}
+#lightbox-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	@include size(100%)
+	background-color: rgba(255,255,255,0.8);
+	z-index: 10;
+	opacity: 0;
+	visibility: hidden;
+	@include transition(all 0.5s)
+	&.visible {
+		opacity: 1;
+		visibility: visible;
+	}
+	@media (max-width: $no-lightbox) {
+		display: none;
+	}
+}
+#lightbox {
+	position: fixed;
+	top: 10%;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 11;
+	@include transition(all 0.5s)
+	@include transform(scale(0.6))
+	opacity: 0;
+	visibility: hidden;
+	&.visible {
+		@include transform(scale(1))
+		opacity: 1;
+		visibility: visible;
+	}
+	@media (max-width: $no-lightbox) {
+		display: none;
+	}
+}
+#lightbox-content {
+	display: inline-block;
+	background-color: #333333;
+}
+#lightbox-img {
+	float: left;
+	img {
+		display: block;
+		width: 500px;
+	}
+}
+#lightbox-tools {
+	float: left;
+	span {
+		display: block;
+		padding: 20px;
+		color: white;
+		font-size: 20px;
+		cursor: pointer;
+		&:hover {
+			color: $pink-3;
+		}
+	}
+	span.icon-close {
+		border-bottom: 1px solid #555555;
+		margin-bottom: 20px;
+	}
+	a:link, a:visited, a:hover, a:active {
+		color: white;
+		text-decoration: none;
+	}
+	a:hover {
+		color: $pink-3;
+	}
+}
+#lightbox-credit {
+	background-color: #111111;
+	font-family: "Lato", sans-serif;
+	color: white;
+	//text-align: left;
+	padding: 3px 0;
+}
+#leaderboard {
+	@include size(728px 90px)
+	background-color: #222222;
+	margin: 10px auto;
+	text-align: center;
+	@media (max-width: 730px) {
+		display: none;
+	}
+}
+//Tophat
+
+#tophat {
+	height: 40px;
+	background-color: white;
+	overflow: hidden;
+}
+#logo {
+	width: 250px;
+	height: 100%;
+	float: left;
+	line-height: 43px;
+	vertical-align: middle;
+	img {
+		margin: 0 10px;
+		width: 90%;
+		opacity: 0.5;
+	}
+	@media (max-width: 400px){
+		width: 200px;
+	}
+}
+.tophat-share-tools {
+	float: right;
+	height: 100%;
+	line-height: 35px;
+	font-size: 24px;
+	vertical-align: middle;
+	color: $pink-2;
+	margin: 0 10px;
+	text-align: center;
+	span {
+		cursor: pointer;
+		vertical-align: middle;
+		margin-right: 8px;
+		&:hover {
+			color: $pink-3;
+		}
+	}
+	@media (max-width: 760px) {
+		//margin-right: 45px;
+		font-size: 18px;
+		line-height: 40px;
+	}
+}
+
+footer {
+	background-color: $pink-1;
+	border-top: 3px solid darken($pink-1, 2%);
+	padding: 50px;
+	text-align: center;
+	header {
+		color: $pink-3;
+		font-family: "Lato", sans-serif;
+	}
+	ul {
+		li {
+			font-family: "Lato", sans-serif;
+			margin: 0;
+			color: #666666;
+		}
+	}
+	.credits {
+		display: inline-block;
+		width: auto;
+		margin: 0 3em;
+		vertical-align: top;
+	}
+	img {
+		width: 200px;
+		opacity: 0.8;
+		margin-top: 30px;
+	}
+}
+/***** CLEARFIX *****/
+
+.group:after {
+	visibility: hidden;
+	display: block;
+	content: "";
+	clear: both;
+	height: 0;
+}
+* html .group {
+	zoom: 1;
+}
+
+*:first-child+html .group {
+	zoom: 1;
+}
+
+
 
 
 /* Leaderboard */

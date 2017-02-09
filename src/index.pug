@@ -5,66 +5,135 @@
 //- There are two datalink variables so I don't have to rewrite the link every time. 
 //- The second datalink variable declaration overwrites the first one. 
 //- When I want to switch to my server assets, I comment out the second declaration.
-- var datalink = "http://data.baltimoresun.com/PROJECTLINK/"
-- var datalink = ""
+- var datalink = 'http://data.baltimoresun.com/valentines/'
+- var datalink = ''
+
+include includes/cards
 
 doctype html
 //if lt IE 7
-	<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+	<html class='no-js lt-ie9 lt-ie8 lt-ie7'>
 //if IE 7
-	<html class="no-js lt-ie9 lt-ie8">
+	<html class='no-js lt-ie9 lt-ie8'>
 //if IE 8
-	<html class="no-js lt-ie9">
-html(class="no-js", lang="en")
+	<html class='no-js lt-ie9'>
+html(class='no-js', lang='en')
 	head
 		//Basic page needs
-		meta(charset="utf-8")
-		title
-		meta(name="description", content="")
-		meta(name="author", content="") 
-		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
-		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
+		meta(charset='utf-8')
+		title Baltimore-themed Valentines from the Baltimore Sun
+		meta(name='description', content='')
+		meta(name='author', content='The Baltimore Sun') 
+		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+		link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Pacifico|Lato')
 		//- Bootstrap, js below
-		//- link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
-		link(rel="stylesheet", type="text/css", href=datalink + "css/style.css")
+		//- link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+		link(rel='stylesheet', type='text/css', href=datalink + 'css/base.css')
+		link(rel='stylesheet', type='text/css', href=datalink + 'css/fonts.css')
+		link(rel='stylesheet', type='text/css', href=datalink + 'css/style.css')
 
 		//Facebook Stuff
-		meta(property="og:title", content="")
-		meta(property="og:url", content="")
-		meta(property="og:image", content="")
-		meta(property="og:site_name", content="The Baltimore Sun")
-		meta(property="og:description", content="")
-		meta(property="fb:app_id", content="310302989040998")
+		meta(property='og:title', content='Baltimore Sun Valentines')
+		meta(property='og:url', content='http://data.baltimoresun.com/valentines/')
+		meta(property='og:image', content='http://data.baltimoresun.com/valentines/images/social.jpg')
+		meta(property='og:site_name', content='The Baltimore Sun')
+		meta(property='og:description', content='From Charm City w/ <3: Baltimore-themed valentines')
+		meta(property='fb:app_id', content='310302989040998')
 		//Twitter Stuff
-		meta(name="twitter:card", content="summary")
-		meta(name="twitter:site", content="@baltimoresun")
-		meta(name="twitter:creator", content="")
-		meta(name="twitter:title", content="")
-		meta(name="twitter:description", content="")
-		meta(name="twitter:image", content="")
-		meta(name="twitter:domain", content="baltimoresun.com")
+		meta(name='twitter:card', content='summary')
+		meta(name='twitter:site', content='@baltimoresun')
+		meta(name='twitter:creator', content='')
+		meta(name='twitter:title', content='Baltimore Sun Valentines')
+		meta(name='twitter:description', content='From Charm City w/ <3: Baltimore-themed valentines')
+		meta(name='twitter:image', content='http://data.baltimoresun.com/valentines/images/social.jpg')
+		meta(name='twitter:domain', content='baltimoresun.com')
 
-		//- Ad tag, uncomment to put in ad. Be sure to uncomment the ad-for-body below.
-		//- include includes/ad-for-header.html
-		
-	body
-		//- This omniture file will also add a topnav. 
-		//- Remember to update the omniture tags
+		//Omniture Code
 		include includes/omniture.html
 		
-		.container
-			h1 H1 / MONTSERRAT
-			p P / LATO Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec eros ac risus condimentum pretium. In faucibus quis risus sit amet ornare.
-			a(href="" target="_blank") A / LATO / GOLDENROD
-		//- Ad tag, uncomment to put in ad. Be sure to uncomment the ad-for-header above.
-		//- #leaderboard			
-			include includes/ad-for-body.html
+		//- Ad tag, uncomment to put in ad. Be sure to uncomment the ad-for-body below.
+		include includes/ad-for-header.html
 		
+	body
+		#tophat
+			.group
+			#logo
+				a(href='http://www.baltimoresun.com')
+					img(src='http://data.baltimoresun.com/valentines/images/baltimore-sun-logo.png' border='0')
+			.tophat-share-tools
+				span.icon-facebook
+				span.icon-twitter
+		#header
+			span Baltimore
+			img(src='http://data.baltimoresun.com/valentines/images/heart-skyline@2x.png')
+			span Valentines
+		#lightbox-overlay
+		#lightbox
+			#lightbox-content
+				.group
+					#lightbox-img
+						img(src='')
+					#lightbox-tools(data-slug='')
+						span.icon-close
+						span.icon-twitter2
+						span.icon-facebook2
+						span.icon-pinterest
+						a(href='' download='')
+							span.icon-download
+				#lightbox-credit Artist: 
+					span Kalani Gordon
+		#valentines
+			.group
+				for card in cards
+					.valentine(data-slug=card.slug)
+						img.visible(src='http://data.baltimoresun.com/valentines/images/valentines/600x600/' + card.slug + '.jpg')
+						.overlay
+						.expand
+							span.icon-expand
+						.share-tools
+							.group
+								span.icon-twitter2
+								span.icon-facebook2
+								span.icon-pinterest
+								a(href='http://data.baltimoresun.com/valentines/images/valentines/800x800/' + card.slug + '.jpg' download='bsun-' + card.slug + '.jpg')
+									span.icon-download
+							.mobile-artist Artist: #{card.artist}
+		#leaderboard
+			include includes/ad-for-body.html
+		footer
+			.credits.credits--artists
+				header Artists:
+				ul
+					li Emma Patti Harris
+					li Kalani Gordon
+					li Matt Bracken
+					li Adam Marton
+					//- li Jin Bae Kim
+					li Caroline Pate
+					li Greg Kohn
+					li Patrick Maynard
+					li Dana Amihere
+					li Stokely Baksh
+					li Michael Gold
+			.credits.credits--writers
+				header Writers:
+				ul
+					li Steve Earley
+					li Quinn Kelley
+					li Christina Tkacik
+					li Matt Bracken
+					li Emma Patti Harris
+					li Meghan Pryce
+			br
+			img(src='images/baltimore-sun-logo.png')
+
+
 		//Javascript
 		//- MAKE SURE TO CHECK OUT package.json and look at the uglify script. 
-		script(src=datalink + "js/min/jquery-3.0.0.min.js")
+		//- script(src=datalink + 'js/min/jquery-3.0.0.min.js')
+		script(src="js/jquery-1.10.2.min.js")
 		//- Bootstrap, css above
-		//- script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
-		script(src=datalink + "js/app.js")
-		//- script(src=datalink + "js/app.min.js")
+		//- script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+		script(src=datalink + 'js/app.js')
+		//- script(src=datalink + 'js/app.min.js')
 		

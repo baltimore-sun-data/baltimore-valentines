@@ -133,6 +133,31 @@ var card_data = [ {
     social: "My love for you is overdue",
     artist: "Caroline Pate",
     twitpic: "pic.twitter.com/0lZyLy8s9L"
+}, {
+    slug: "waterwheel",
+    social: "I only have eyes for you",
+    artist: "Emma Patti Harris",
+    twitpic: "pic.twitter.com/pZK32QdNut"
+}, {
+    slug: "phelpsface",
+    social: "Face it, we're meant for each other",
+    artist: "Emma Patti Harris",
+    twitpic: "pic.twitter.com/CiBU8vPCBk"
+}, {
+    slug: "trimble",
+    social: "You make my heart Trimble",
+    artist: "Emma Patti Harris",
+    twitpic: "pic.twitter.com/gTph6uXwWW"
+}, {
+    slug: "deray",
+    social: "I'm invested in our love",
+    artist: "Emma Patti Harris",
+    twitpic: "pic.twitter.com/FWsx1GsG6Y"
+}, {
+    slug: "flacco",
+    social: "You're elite in my playbook",
+    artist: "Emma Patti Harris",
+    twitpic: "pic.twitter.com/ZxBvtVhdpH"
 } ];
 
 var app = {
